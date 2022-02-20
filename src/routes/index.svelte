@@ -1,7 +1,8 @@
 <script>
 	import { todos } from '../stores';
+	import Nav from '@comp/Nav.svelte';
 	let newTodo;
-	$: console.log('$todos', $todos);
+	// $: console.log('$todos', $todos);
 </script>
 
 <div class="mt-6 mb-28 px-6">
@@ -85,4 +86,8 @@
 			</div>
 		{/each}
 	</div>
+</div>
+
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]">
+	<Nav />
 </div>
