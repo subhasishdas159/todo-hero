@@ -3,7 +3,7 @@
 	import Nav from '@comp/Nav.svelte';
 </script>
 
-<div class="fixed bottom-8 left-1/2 -translate-x-1/2 shadow-md border-top">
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2">
 	<Nav />
 </div>
 <slot />

@@ -18,8 +18,10 @@
 					<button
 						class="btn btn-square"
 						type="submit"
-						on:click|preventDefault={() =>
-							($todos = [{ id: Date.now(), text: newTodo }, ...$todos])}
+						on:click|preventDefault={() => {
+							$todos = [{ id: Date.now(), text: newTodo }, ...$todos];
+							newTodo = '';
+						}}
 					>
 						<svg
 							class="w-6 h-6"
@@ -38,7 +40,16 @@
 				</form>
 			</div>
 			{#each $todos as todo (todo.id)}
-				{todo.text}
+				<div class="card w-96 bg-base-100 shadow-xl">
+					<div class="card-body">
+						<p>{todo.text}</p>
+						<div class="justify-end card-actions">
+							<div class="badge badge-outline">Fashion</div>
+							<div class="badge badge-outline">Products</div>
+							<div class="badge badge-outline">Products</div>
+						</div>
+					</div>
+				</div>
 			{/each}
 		</div>
 	</div>
