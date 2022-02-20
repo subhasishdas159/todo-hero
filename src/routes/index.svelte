@@ -20,7 +20,10 @@
 						type="submit"
 						on:click|preventDefault={() => {
 							if (!newTodo) return;
-							$todos = [{ id: Date.now(), text: newTodo }, ...$todos];
+							$todos = [
+								{ id: Date.now(), text: newTodo, urgent: false, important: false, hard: false },
+								...$todos
+							];
 							newTodo = '';
 						}}
 					>
@@ -45,9 +48,39 @@
 					<div class="card-body">
 						<p>{todo.text}</p>
 						<div class="justify-end card-actions">
-							<div class="badge badge-outline">Urgent</div>
-							<div class="badge badge-outline">imortant</div>
-							<div class="badge badge-outline">hard</div>
+							<div
+								class={`badge ${todo.urgent ? 'badge-error' : 'badge-outline'}`}
+								on:click={() => {
+									const index = $todos.indexOf(
+										$todos.filter((todoItem) => todoItem.id === todo.id)[0]
+									);
+									$todos[index].urgent = !todo.urgent;
+								}}
+							>
+								Urgent
+							</div>
+							<div
+								class={`badge ${todo.important ? 'badge-warning' : 'badge-outline'}`}
+								on:click={() => {
+									const index = $todos.indexOf(
+										$todos.filter((todoItem) => todoItem.id === todo.id)[0]
+									);
+									$todos[index].important = !todo.important;
+								}}
+							>
+								imortant
+							</div>
+							<div
+								class={`badge ${todo.hard ? 'badge-info' : 'badge-outline'}`}
+								on:click={() => {
+									const index = $todos.indexOf(
+										$todos.filter((todoItem) => todoItem.id === todo.id)[0]
+									);
+									$todos[index].hard = !todo.hard;
+								}}
+							>
+								hard
+							</div>
 						</div>
 					</div>
 				</div>
