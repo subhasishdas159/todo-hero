@@ -39,13 +39,15 @@
 	</li>
 	<li
 		on:click={() => {
-			const hard = $todos.filter((todoItem) => todoItem.hard);
-			const notHard = $todos.filter((todoItem) => !todoItem.hard);
-			const important = [...hard, ...notHard].filter((todoItem) => todoItem.important);
-			const notImportant = [...hard, ...notHard].filter((todoItem) => !todoItem.important);
-			const urgent = [...important, ...notImportant].filter((todoItem) => todoItem.urgent);
-			const notUrgent = [...important, ...notImportant].filter((todoItem) => !todoItem.urgent);
-			$todos = [...urgent, ...notUrgent];
+			const hard = $todos.filter((todoItem) => todoItem.isHard);
+			const notHard = $todos.filter((todoItem) => !todoItem.isHard);
+			const important = [...hard, ...notHard].filter((todoItem) => todoItem.isImportant);
+			const notImportant = [...hard, ...notHard].filter((todoItem) => !todoItem.isImportant);
+			const urgent = [...important, ...notImportant].filter((todoItem) => todoItem.isUrgent);
+			const notUrgent = [...important, ...notImportant].filter((todoItem) => !todoItem.isUrgent);
+			const done = [...urgent, ...notUrgent].filter((todoItem) => todoItem.isDone);
+			const notDone = [...urgent, ...notUrgent].filter((todoItem) => !todoItem.isDone);
+			$todos = [...notDone, ...done];
 		}}
 	>
 		<span>
