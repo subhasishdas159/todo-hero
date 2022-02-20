@@ -1,6 +1,7 @@
 <script>
 	import { todos } from '../stores';
 	let newTodo;
+	$: console.log('$todos', $todos);
 </script>
 
 <div class="max-w-6xl mx-auto">
@@ -17,7 +18,8 @@
 					<button
 						class="btn btn-square"
 						type="submit"
-						on:click|preventDefault={() => ($todos = [newTodo, ...$todos])}
+						on:click|preventDefault={() =>
+							($todos = [{ id: Date.now(), text: newTodo }, ...$todos])}
 					>
 						<svg
 							class="w-6 h-6"
@@ -35,7 +37,9 @@
 					</button>
 				</form>
 			</div>
-			{$todos}
+			{#each $todos as todo (todo.id)}
+				{todo.text}
+			{/each}
 		</div>
 	</div>
 </div>
