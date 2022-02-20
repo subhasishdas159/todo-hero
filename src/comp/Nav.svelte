@@ -1,4 +1,4 @@
-<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border-t">
+<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border">
 	<li>
 		<a>
 			<svg

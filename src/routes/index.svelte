@@ -6,19 +6,20 @@
 
 <div class="max-w-6xl mx-auto">
 	<div class="container mx-auto px-6">
-		<div class="mt-6">
+		<div class="mt-6 mb-28">
 			<div class="form-control">
-				<form class="input-group">
+				<form class="input-group w-full max-w-md mb-8">
 					<input
 						type="text"
 						placeholder="add new todo"
-						class="input input-bordered"
+						class="input input-bordered w-full focus:outline-none shadow focus:shadow-inner focus:ring-1"
 						bind:value={newTodo}
 					/>
 					<button
-						class="btn btn-square"
+						class="btn btn-square shadow"
 						type="submit"
 						on:click|preventDefault={() => {
+							if (!newTodo) return;
 							$todos = [{ id: Date.now(), text: newTodo }, ...$todos];
 							newTodo = '';
 						}}
@@ -40,13 +41,13 @@
 				</form>
 			</div>
 			{#each $todos as todo (todo.id)}
-				<div class="card w-96 bg-base-100 shadow-xl">
+				<div class="card max-w-md w-full bg-base-100 shadow mt-4 border-t">
 					<div class="card-body">
 						<p>{todo.text}</p>
 						<div class="justify-end card-actions">
-							<div class="badge badge-outline">Fashion</div>
-							<div class="badge badge-outline">Products</div>
-							<div class="badge badge-outline">Products</div>
+							<div class="badge badge-outline">Urgent</div>
+							<div class="badge badge-outline">imortant</div>
+							<div class="badge badge-outline">hard</div>
 						</div>
 					</div>
 				</div>
