@@ -7,6 +7,11 @@ module.exports = {
 		sourceType: 'module',
 		ecmaVersion: 2020
 	},
+	rules: {
+		'template-curly-spacing': ['error', 'never'],
+		'multiline-ternary': 'off',
+		'no-tabs': ['error', { allowIndentationTabs: true }]
+	},
 	env: {
 		browser: true,
 		es2017: true,

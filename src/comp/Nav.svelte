@@ -1,9 +1,11 @@
 <script>
 	import { todos } from '../stores';
-	let askToDelete = false
+	let askToDelete = false;
 </script>
 
-<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]">
+<ul
+	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]"
+>
 	<li
 		on:click={() => {
 			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
@@ -28,13 +30,7 @@
 			>
 		</span>
 	</li>
-	<li
-		on:click={() => {
-			askToDelete = true
-			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
-			$todos = notDone;
-		}}
-	>
+	<li on:click={() => (askToDelete = true)}>
 		<span
 			class="active:bg-error hover:bg-red-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-red-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
 		>
@@ -86,17 +82,28 @@
 	</li>
 </ul>
 
-<!-- The button to open modal -->
-<!-- <label for="my-modal" class="btn modal-button">open modal</label> -->
-
-<!-- Put this part before </body> tag -->
-<input type="checkbox" id="my-modal" class="modal-toggle" checked={askToDelete}>
+<input type="checkbox" id="my-modal" class="modal-toggle" checked={askToDelete} />
 <div class="modal">
-  <div class="modal-box">
-    <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
-    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
-    <div class="modal-action">
-      <label for="my-modal" class="btn">Yay!</label>
-    </div>
-  </div>
+	<div class="modal-box">
+		<h3 class="font-bold text-lg">Delete Completed?</h3>
+		<p class="py-4">clicking delete will delete all completed todos. Click cancel to cancel.</p>
+		<div class="modal-action">
+			<span
+				for="my-modal"
+				class="p-3"
+				on:click={() => {
+					askToDelete = false;
+				}}>Cancel</span
+			>
+			<button
+				for="my-modal"
+				class="btn btn-error"
+				on:click={() => {
+					const notDone = $todos.filter((todoItem) => !todoItem.isDone);
+					$todos = notDone;
+					askToDelete = false;
+				}}>delete</button
+			>
+		</div>
+	</div>
 </div>
