@@ -10,7 +10,7 @@
 		}}
 	>
 		<span
-			class="mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-success mobileOnly:active:text-white"
+			class="active:bg-success hover:bg-green-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-green-300 mobileOnly:active:bg-success mobileOnly:active:text-white"
 		>
 			<svg
 				class="w-5 h-5"
@@ -34,7 +34,7 @@
 		}}
 	>
 		<span
-			class="mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
+			class="active:bg-error hover:bg-red-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-red-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
 		>
 			<svg
 				class="w-5 h-5"
@@ -65,7 +65,7 @@
 		}}
 	>
 		<span
-			class="mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
+			class="active:bg-info hover:bg-blue-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
 		>
 			<svg
 				class="w-5 h-5"
