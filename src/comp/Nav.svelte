@@ -1,53 +1,102 @@
-<ul class="menu bg-base-100 menu-horizontal rounded-box">
-	<li>
-		<a>
+<script>
+	import { todos } from '../stores';
+	let askToDelete = false
+</script>
+
+<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]">
+	<li
+		on:click={() => {
+			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
+			$todos = notDone;
+		}}
+	>
+		<span
+			class="active:bg-success hover:bg-green-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-green-300 mobileOnly:active:bg-success mobileOnly:active:text-white"
+		>
 			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-5 w-5"
+				class="w-5 h-5"
 				fill="none"
-				viewBox="0 0 24 24"
 				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
 				><path
 					stroke-linecap="round"
 					stroke-linejoin="round"
 					stroke-width="2"
-					d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
+					d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
 				/></svg
 			>
-		</a>
+		</span>
 	</li>
-	<li>
-		<a>
+	<li
+		on:click={() => {
+			askToDelete = true
+			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
+			$todos = notDone;
+		}}
+	>
+		<span
+			class="active:bg-error hover:bg-red-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-red-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
+		>
 			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-5 w-5"
+				class="w-5 h-5"
 				fill="none"
-				viewBox="0 0 24 24"
 				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
 				><path
 					stroke-linecap="round"
 					stroke-linejoin="round"
 					stroke-width="2"
-					d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+					d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
 				/></svg
 			>
-		</a>
+		</span>
 	</li>
-	<li>
-		<a>
+	<li
+		on:click={() => {
+			const hard = $todos.filter((todoItem) => todoItem.isHard);
+			const notHard = $todos.filter((todoItem) => !todoItem.isHard);
+			const important = [...hard, ...notHard].filter((todoItem) => todoItem.isImportant);
+			const notImportant = [...hard, ...notHard].filter((todoItem) => !todoItem.isImportant);
+			const urgent = [...important, ...notImportant].filter((todoItem) => todoItem.isUrgent);
+			const notUrgent = [...important, ...notImportant].filter((todoItem) => !todoItem.isUrgent);
+			const done = [...urgent, ...notUrgent].filter((todoItem) => todoItem.isDone);
+			const notDone = [...urgent, ...notUrgent].filter((todoItem) => !todoItem.isDone);
+			$todos = [...notDone, ...done];
+		}}
+	>
+		<span
+			class="active:bg-info hover:bg-blue-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
+		>
 			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				class="h-5 w-5"
+				class="w-5 h-5"
 				fill="none"
-				viewBox="0 0 24 24"
 				stroke="currentColor"
+				viewBox="0 0 24 24"
+				xmlns="http://www.w3.org/2000/svg"
 				><path
 					stroke-linecap="round"
 					stroke-linejoin="round"
 					stroke-width="2"
-					d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+					d="M3 4h13M3 8h9m-9 4h9m5-4v12m0 0l-4-4m4 4l4-4"
 				/></svg
 			>
-		</a>
+		</span>
 	</li>
 </ul>
+
+<!-- The button to open modal -->
+<!-- <label for="my-modal" class="btn modal-button">open modal</label> -->
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal" class="modal-toggle" checked={askToDelete}>
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+    <div class="modal-action">
+      <label for="my-modal" class="btn">Yay!</label>
+    </div>
+  </div>
+</div>
