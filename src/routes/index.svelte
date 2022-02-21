@@ -1,8 +1,31 @@
 <script>
 	import { todos } from '../stores';
 	import Nav from '@comp/Nav.svelte';
+	import { onMount } from 'svelte';
 
-	let newTodo;
+	let newTodo,
+		inputPlaceholder = 'Enter your todo';
+	const sampleTodos = [
+		'Ex. Make vanilla pudding...',
+		'Ex. Buy a horse...',
+		'Ex. Invite someone at office...',
+		'Ex. Race with a turtle...',
+		'Ex. Forget to breathe...',
+		'Ex. Dance hip hop with music...',
+		'Ex. Wear a tie...',
+		'Ex. Go for a swim...',
+		'Ex. Code a website...',
+		'Ex. Imitate a parrot...',
+		'Ex. Say yes to a cat...',
+		"Ex. Snatch away a kid's to...y"
+	];
+
+	onMount(() => {
+		let placeholderInterval = setInterval(() => {
+			inputPlaceholder = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
+		}, 5000);
+		return () => clearInterval(placeholderInterval);
+	});
 </script>
 
 <div class="mt-6 mb-28 px-6">
@@ -10,7 +33,7 @@
 		<form class="input-group w-full max-w-md mb-6 mx-auto">
 			<input
 				type="text"
-				placeholder="add new todo"
+				placeholder={inputPlaceholder}
 				class="input input-bordered w-full focus:outline-none shadow focus:shadow-inner focus:ring-1"
 				bind:value={newTodo}
 			/>
