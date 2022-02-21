@@ -1,8 +1,9 @@
 <script>
 	import { todos } from '../stores';
+	let askToDelete = false
 </script>
 
-<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border">
+<ul class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]">
 	<li
 		on:click={() => {
 			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
@@ -29,6 +30,7 @@
 	</li>
 	<li
 		on:click={() => {
+			askToDelete = true
 			const notDone = $todos.filter((todoItem) => !todoItem.isDone);
 			$todos = notDone;
 		}}
@@ -83,3 +85,18 @@
 		</span>
 	</li>
 </ul>
+
+<!-- The button to open modal -->
+<!-- <label for="my-modal" class="btn modal-button">open modal</label> -->
+
+<!-- Put this part before </body> tag -->
+<input type="checkbox" id="my-modal" class="modal-toggle" checked={askToDelete}>
+<div class="modal">
+  <div class="modal-box">
+    <h3 class="font-bold text-lg">Congratulations random Interner user!</h3>
+    <p class="py-4">You've been selected for a chance to get one year of subscription to use Wikipedia for free!</p>
+    <div class="modal-action">
+      <label for="my-modal" class="btn">Yay!</label>
+    </div>
+  </div>
+</div>
