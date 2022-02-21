@@ -1,13 +1,13 @@
 <script>
 	import { todos } from '../stores';
 	import Nav from '@comp/Nav.svelte';
+
 	let newTodo;
-	// $: console.log('$todos', $todos);
 </script>
 
 <div class="mt-6 mb-28 px-6">
 	<div class="form-control">
-		<form class="input-group w-full max-w-md mb-8 mx-auto">
+		<form class="input-group w-full max-w-md mb-6 mx-auto">
 			<input
 				type="text"
 				placeholder="add new todo"
@@ -49,6 +49,7 @@
 			</button>
 		</form>
 	</div>
+
 	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
 		{#each $todos as todo (todo.id)}
 			<div
