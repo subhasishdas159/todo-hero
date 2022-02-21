@@ -56,13 +56,13 @@
 					todo.isDone && 'opacity-75'
 				}`}
 			>
-				<div class="card-body">
+				<div class="card-body pb-6 pt-2 pl-3 pr-4">
 					<div class="form-control">
-						<label class="cursor-pointer label justify-start gap-4">
+						<label class="cursor-pointer label justify-start gap-3">
 							<input
 								type="checkbox"
 								checked={todo.isDone}
-								class="checkbox checkbox-primary"
+								class="checkbox checkbox-primary block w-6 h-6 flex-shrink-0"
 								on:change={() => {
 									const index = $todos.indexOf(
 										$todos.filter((todoItem) => todoItem.id === todo.id)[0]
@@ -83,7 +83,7 @@
 								$todos[index].isUrgent = !todo.isUrgent;
 							}}
 						>
-							isUrgent
+							urgent
 						</div>
 						<div
 							class={`badge ${todo.isImportant ? 'badge-warning' : 'badge-outline'} cursor-pointer`}
