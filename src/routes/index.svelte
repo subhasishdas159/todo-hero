@@ -22,7 +22,11 @@
 
 	onMount(() => {
 		let placeholderInterval = setInterval(() => {
-			inputPlaceholder = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
+			if (inputPlaceholder === 'Enter your todo') {
+				inputPlaceholder = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
+			} else {
+				inputPlaceholder = 'Enter your todo';
+			}
 		}, 5000);
 		return () => clearInterval(placeholderInterval);
 	});
