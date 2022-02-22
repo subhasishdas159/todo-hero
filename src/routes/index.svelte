@@ -17,7 +17,7 @@
 		'Ex. Code a website...',
 		'Ex. Imitate a parrot...',
 		'Ex. Say yes to a cat...',
-		"Ex. Snatch away a kid's to...y"
+		"Ex. Snatch away a kid's toy..."
 	];
 
 	onMount(() => {
