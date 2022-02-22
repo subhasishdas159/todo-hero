@@ -80,11 +80,11 @@
 	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
 		{#each $todos as todo (todo.id)}
 			<div
-				class={`card max-w-md w-full mx-auto bg-base-100 shadow mt-4 border-t ${
-					todo.isDone && 'opacity-75'
+				class={`card max-w-md w-full mx-auto bg-base-100 shadow mt-2 border-t ${
+					todo.isDone && 'opacity-70'
 				}`}
 			>
-				<div class="card-body pb-6 pt-2 pl-3 pr-4">
+				<div class="card-body pb-4 pt-2 pl-3 pr-4">
 					<div class="form-control">
 						<label class="cursor-pointer label justify-start gap-3">
 							<input
@@ -102,8 +102,42 @@
 						</label>
 					</div>
 					<div class="justify-end card-actions">
+						<div class="btn-group">
+							<div class="btn btn-sm btn-secondary px-1">
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M15 19l-7-7 7-7"
+									/></svg
+								>
+							</div>
+							<div class="btn btn-sm btn-secondary px-1">
+								<svg
+									class="w-6 h-6"
+									fill="none"
+									stroke="currentColor"
+									viewBox="0 0 24 24"
+									xmlns="http://www.w3.org/2000/svg"
+									><path
+										stroke-linecap="round"
+										stroke-linejoin="round"
+										stroke-width="2"
+										d="M9 5l7 7-7 7"
+									/></svg
+								>
+							</div>
+						</div>
 						<div
-							class={`badge ${todo.isUrgent ? 'badge-error' : 'badge-outline'} cursor-pointer`}
+							class={`badge ${
+								todo.isUrgent ? 'badge-error' : 'badge-outline'
+							} cursor-pointer py-4 px-2`}
 							on:click={() => {
 								const index = $todos.indexOf(
 									$todos.filter((todoItem) => todoItem.id === todo.id)[0]
@@ -111,10 +145,12 @@
 								$todos[index].isUrgent = !todo.isUrgent;
 							}}
 						>
-							urgent
+							now!
 						</div>
 						<div
-							class={`badge ${todo.isImportant ? 'badge-warning' : 'badge-outline'} cursor-pointer`}
+							class={`badge ${
+								todo.isImportant ? 'badge-warning' : 'badge-outline'
+							} cursor-pointer py-4 px-2`}
 							on:click={() => {
 								const index = $todos.indexOf(
 									$todos.filter((todoItem) => todoItem.id === todo.id)[0]
@@ -122,10 +158,12 @@
 								$todos[index].isImportant = !todo.isImportant;
 							}}
 						>
-							imortant
+							imp
 						</div>
 						<div
-							class={`badge ${todo.isHard ? 'badge-info' : 'badge-outline'} cursor-pointer`}
+							class={`badge ${
+								todo.isHard ? 'badge-info' : 'badge-outline'
+							} cursor-pointer py-4 px-2`}
 							on:click={() => {
 								const index = $todos.indexOf(
 									$todos.filter((todoItem) => todoItem.id === todo.id)[0]
