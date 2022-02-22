@@ -42,7 +42,7 @@
 				bind:value={newTodo}
 			/>
 			<button
-				class="btn btn-square shadow"
+				class="btn btn-square shadow btn-primary"
 				type="submit"
 				on:click|preventDefault={() => {
 					if (!newTodo) return;
@@ -86,6 +86,22 @@
 			>
 				<div class="card-body pb-4 pt-2 pl-3 pr-4">
 					<div class="form-control">
+						<div
+							class="absolute top-2 right-4 p-2 z-20"
+							on:click|stopPropagation={() => {
+								console.log('djfkgl');
+							}}
+						>
+							<svg
+								class="w-6 h-6"
+								fill="currentColor"
+								viewBox="0 0 20 20"
+								xmlns="http://www.w3.org/2000/svg"
+								><path
+									d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+								/></svg
+							>
+						</div>
 						<label class="cursor-pointer label justify-start gap-3">
 							<input
 								type="checkbox"
@@ -101,8 +117,8 @@
 							<span class={`label-text ${todo.isDone && 'line-through'}`}>{todo.text}</span>
 						</label>
 					</div>
-					<div class="justify-end card-actions">
-						<div class="btn-group">
+					<div class="justify-end card-actions mt-4">
+						<div class="btn-group mr-2">
 							<div class="btn btn-sm btn-secondary px-1">
 								<svg
 									class="w-6 h-6"
