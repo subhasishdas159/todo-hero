@@ -1,5 +1,33 @@
 @tailwind base;
 @tailwind components;
+@font-face {
+  font-family: montserrat;
+  src: url(/static/fonts/Montserrat-Regular.ttf);
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+/* @font-face {
+  font-family: sharp;
+  src: url(/fonts/Sharp-Grotesk-Medium-20-Regular.ttf);
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: sharp;
+  src: url(/fonts/SharpGrotesk-Medium25.otf);
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: sharp;
+  src: url(/fonts/Sharp-Grotesk-SmBold-20-Regular.ttf);
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+} */
 @tailwind utilities;
 
 body {
