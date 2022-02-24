@@ -109,10 +109,10 @@
 					todo.isDone && 'opacity-70'
 				}`}
 			>
-				<div class="card-body pb-3 pt-1 pl-3 pr-4">
+				<div class="card-body pb-3 pt-1 pl-2 pr-4">
 					<div class="form-control">
 						<div
-							class="absolute top-2 right-4 p-2 z-20"
+							class="absolute top-2 right-3 p-2 z-20"
 							on:click|stopPropagation={() => {
 								console.log('djfkgl');
 							}}
@@ -134,7 +134,7 @@
 								class="checkbox checkbox-primary block w-6 h-6 flex-shrink-0"
 								on:change={() => (todo.isDone = !todo.isDone)}
 							/>
-							<span class={`label-text ${todo.isDone && 'line-through'}`}>{todo.text}</span>
+							<span class={`label-text ${todo.isDone && 'line-through'} mr-6`}>{todo.text}</span>
 						</label>
 					</div>
 					<div class="justify-end card-actions mt-4">
