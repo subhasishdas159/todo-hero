@@ -46,7 +46,7 @@
 	};
 </script>
 
-<div class="mt-6 mb-28 px-6">
+<div class="mt-6 px-6">
 	<div class="form-control">
 		<form class="input-group w-full max-w-md mb-6 mx-auto">
 			<input
@@ -89,6 +89,17 @@
 				>
 			</button>
 		</form>
+	</div>
+
+	<div class="max-w-md mx-auto mb-6">
+		<p class="text-center">
+			{$todos.filter((todoItem) => todoItem.isDone).length}/{$todos.length} Done
+		</p>
+		<progress
+			class="progress progress-accent w-full"
+			value={($todos.filter((todoItem) => todoItem.isDone).length * 100) / $todos.length}
+			max="100"
+		/>
 	</div>
 
 	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">

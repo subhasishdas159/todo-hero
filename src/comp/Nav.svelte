@@ -79,5 +79,5 @@
 	onConfirm={onSort}
 	btnLabel="Sort"
 	header="Sort Todos?"
-	text="Clicking sort will sort all todos based on priority specified. Continue?"
+	text="Clicking sort will sort all todos automatically based on priorities specified. Continue?"
 />
