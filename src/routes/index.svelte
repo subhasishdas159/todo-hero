@@ -37,10 +37,11 @@
 			const nextValue = $todos[$todos.indexOf(todo) + 1];
 			$todos[$todos.indexOf(todo) + 1] = todo;
 			$todos[$todos.indexOf(todo)] = nextValue;
-		} else {
+		}
+		if (direction === 'up' && $todos.indexOf(todo) !== 0) {
 			const prevValue = $todos[$todos.indexOf(todo) - 1];
 			$todos[$todos.indexOf(todo) - 1] = todo;
-			$todos[$todos.indexOf(todo)] = prevValue;
+			$todos[$todos.indexOf(todo) + 1] = prevValue;
 		}
 	};
 </script>
