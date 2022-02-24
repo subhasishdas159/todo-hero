@@ -1,24 +1,33 @@
 <script>
 	import { todos } from '../stores';
+	import Modal from '@comp/Modal.svelte';
 	let askToDelete = false;
+	let askToSort = false;
+
+	const onDelete = () => {
+		const notDone = $todos.filter((todoItem) => !todoItem.isDone);
+		$todos = notDone;
+		askToDelete = false;
+	};
+
+	const onSort = () => {
+		const hard = $todos.filter((todoItem) => todoItem.isHard);
+		const notHard = $todos.filter((todoItem) => !todoItem.isHard);
+		const important = [...hard, ...notHard].filter((todoItem) => todoItem.isImportant);
+		const notImportant = [...hard, ...notHard].filter((todoItem) => !todoItem.isImportant);
+		const urgent = [...important, ...notImportant].filter((todoItem) => todoItem.isUrgent);
+		const notUrgent = [...important, ...notImportant].filter((todoItem) => !todoItem.isUrgent);
+		const done = [...urgent, ...notUrgent].filter((todoItem) => todoItem.isDone);
+		const notDone = [...urgent, ...notUrgent].filter((todoItem) => !todoItem.isDone);
+		$todos = [...notDone, ...done];
+		askToSort = false;
+	};
 </script>
 
 <ul
 	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]"
 >
-	<li
-		on:click={() => {
-			const hard = $todos.filter((todoItem) => todoItem.isHard);
-			const notHard = $todos.filter((todoItem) => !todoItem.isHard);
-			const important = [...hard, ...notHard].filter((todoItem) => todoItem.isImportant);
-			const notImportant = [...hard, ...notHard].filter((todoItem) => !todoItem.isImportant);
-			const urgent = [...important, ...notImportant].filter((todoItem) => todoItem.isUrgent);
-			const notUrgent = [...important, ...notImportant].filter((todoItem) => !todoItem.isUrgent);
-			const done = [...urgent, ...notUrgent].filter((todoItem) => todoItem.isDone);
-			const notDone = [...urgent, ...notUrgent].filter((todoItem) => !todoItem.isDone);
-			$todos = [...notDone, ...done];
-		}}
-	>
+	<li on:click={() => (askToSort = true)}>
 		<span
 			class="active:bg-info hover:bg-blue-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
 		>
@@ -58,28 +67,17 @@
 	</li>
 </ul>
 
-<input type="checkbox" id="my-modal" class="modal-toggle" checked={askToDelete} />
-<div class="modal">
-	<div class="modal-box">
-		<h3 class="font-bold text-lg">Delete Completed?</h3>
-		<p class="py-4">clicking delete will delete all completed todos. Click cancel to cancel.</p>
-		<div class="modal-action">
-			<span
-				for="my-modal"
-				class="p-3"
-				on:click={() => {
-					askToDelete = false;
-				}}>Cancel</span
-			>
-			<button
-				for="my-modal"
-				class="btn btn-error"
-				on:click={() => {
-					const notDone = $todos.filter((todoItem) => !todoItem.isDone);
-					$todos = notDone;
-					askToDelete = false;
-				}}>delete</button
-			>
-		</div>
-	</div>
-</div>
+<Modal
+	bind:show={askToDelete}
+	onConfirm={onDelete}
+	btnLabel="Delete"
+	header="Delete Completed?"
+	text="Clicking delete will delete all completed todos. Continue?"
+/>
+<Modal
+	bind:show={askToSort}
+	onConfirm={onSort}
+	btnLabel="Sort"
+	header="Sort Todos?"
+	text="Clicking sort will sort all todos based on priority specified. Continue?"
+/>
