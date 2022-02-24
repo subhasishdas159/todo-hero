@@ -9,7 +9,7 @@ const config = {
 			resolve: {
 				alias: {
 					// these are the aliases and paths to them
-					'@comp': path.resolve('./src/comp'),
+					'@comp': path.resolve('./src/comp')
 				}
 			}
 		}
