@@ -70,6 +70,7 @@
 <Modal
 	bind:show={askToDelete}
 	onConfirm={onDelete}
+	error
 	btnLabel="Delete"
 	header="Delete Completed?"
 	text="Clicking delete will delete all completed todos. Continue?"
