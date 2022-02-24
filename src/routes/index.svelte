@@ -46,7 +46,7 @@
 	};
 </script>
 
-<div class="mt-6 px-6">
+<div class="mt-6 px-6 mb-20">
 	<div class="form-control">
 		<form class="input-group w-full max-w-md mb-6 mx-auto">
 			<input
@@ -91,7 +91,7 @@
 		</form>
 	</div>
 
-	<div class="max-w-md mx-auto mb-6">
+	<div class="max-w-md mx-auto -mt-2 mb-2">
 		<p class="text-center">
 			{$todos.filter((todoItem) => todoItem.isDone).length}/{$todos.length} Done
 		</p>
@@ -105,11 +105,11 @@
 	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
 		{#each $todos as todo (todo.id)}
 			<div
-				class={`card max-w-md w-full mx-auto bg-base-100 shadow mt-2 border-t ${
+				class={`card max-w-md w-full mx-auto bg-base-100 shadow mt-1 border-t ${
 					todo.isDone && 'opacity-70'
 				}`}
 			>
-				<div class="card-body pb-4 pt-2 pl-3 pr-4">
+				<div class="card-body pb-3 pt-1 pl-3 pr-4">
 					<div class="form-control">
 						<div
 							class="absolute top-2 right-4 p-2 z-20"

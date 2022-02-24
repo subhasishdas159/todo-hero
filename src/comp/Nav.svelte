@@ -25,7 +25,7 @@
 </script>
 
 <ul
-	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-8 left-1/2 -translate-x-1/2 z-[99]"
+	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-6 left-1/2 -translate-x-1/2 z-[99]"
 >
 	<li on:click={() => (askToSort = true)}>
 		<span
