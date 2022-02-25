@@ -140,18 +140,20 @@
 				<div class="card-body pb-3 pt-1 pl-2 pr-4">
 					<div class="form-control">
 						<div
-							class="absolute top-2 right-3 p-2 z-20"
+							class="absolute top-1 right-1 p-0 z-20 text-success"
 							on:click|stopPropagation={() => {
 								console.log('djfkgl');
 							}}
 						>
 							<svg
-								class="w-6 h-6"
+								class="w-8 h-8"
 								fill="currentColor"
 								viewBox="0 0 20 20"
 								xmlns="http://www.w3.org/2000/svg"
 								><path
-									d="M6 10a2 2 0 11-4 0 2 2 0 014 0zM12 10a2 2 0 11-4 0 2 2 0 014 0zM16 12a2 2 0 100-4 2 2 0 000 4z"
+									fill-rule="evenodd"
+									d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z"
+									clip-rule="evenodd"
 								/></svg
 							>
 						</div>

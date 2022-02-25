@@ -39,7 +39,7 @@ module.exports = {
 					info: '#1c92f2',
 					success: '#86AA68',
 					warning: '#E3B65B',
-					error: '#BF616A',
+					error: '#CB7E85',
 
 					'--rounded-box': '1rem',
 					'--rounded-btn': '0.5rem',
