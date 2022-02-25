@@ -29,38 +29,32 @@
 >
 	<li on:click={() => (askToSort = true)}>
 		<span
-			class="active:bg-info hover:bg-blue-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
+			class="active:bg-info hover:bg-blue-100 text-info hover:text-info active:text-white mobileOnly:hover:bg-white mobileOnly text-info:hover:text-info mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
 		>
 			<svg
 				class="w-6 h-6"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
+				fill="currentColor"
+				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
 				><path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"
+					d="M3 3a1 1 0 000 2h11a1 1 0 100-2H3zM3 7a1 1 0 000 2h5a1 1 0 000-2H3zM3 11a1 1 0 100 2h4a1 1 0 100-2H3zM13 16a1 1 0 102 0v-5.586l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 101.414 1.414L13 10.414V16z"
 				/></svg
 			>
 		</span>
 	</li>
 	<li on:click={() => (askToDelete = true)}>
 		<span
-			class="active:bg-error hover:bg-red-100 hover:text-neutral active:text-white mobileOnly:hover:bg-white mobileOnly:hover:text-neutral mobileOnly:focus:bg-red-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
+			class="active:bg-error hover:bg-red-100 text-error hover:text-error active:text-white mobileOnly:hover:bg-white mobileOnly text-error:hover:text-error mobileOnly:focus:bg-red-300 mobileOnly:active:bg-error mobileOnly:active:text-white"
 		>
 			<svg
-				class="w-5 h-5"
-				fill="none"
-				stroke="currentColor"
-				viewBox="0 0 24 24"
+				class="w-6 h-6"
+				fill="currentColor"
+				viewBox="0 0 20 20"
 				xmlns="http://www.w3.org/2000/svg"
 				><path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					stroke-width="2"
-					d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
+					fill-rule="evenodd"
+					d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+					clip-rule="evenodd"
 				/></svg
 			>
 		</span>
