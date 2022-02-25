@@ -3,8 +3,24 @@
 	import Nav from '@comp/Nav.svelte';
 	import { onMount } from 'svelte';
 
+	function typeWriter(txt, speed = 100) {
+		inputPlaceholder = ''
+		let timeout, i = 0;
+
+		function typeText() {
+			if (i < txt.length) {
+				inputPlaceholder += txt.charAt(i);
+				i++;
+				setTimeout(typeText, speed);
+			}
+		}
+
+		typeText()
+	}
+
 	let newTodo,
 		inputPlaceholder = 'Enter your todo';
+
 	const sampleTodos = [
 		'Ex. Make vanilla pudding...',
 		'Ex. Buy a horse...',
@@ -22,13 +38,14 @@
 
 	onMount(() => {
 		let placeholderInterval = setInterval(() => {
-			if (inputPlaceholder === 'Enter your todo') {
-				inputPlaceholder = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
-			} else {
-				inputPlaceholder = 'Enter your todo';
-			}
-		}, 2000);
+			typeWriter(sampleTodos[Math.floor(Math.random() * sampleTodos.length)]);
+			// if (inputPlaceholder === 'Enter your todo') {
+			// } else {
+			// 	inputPlaceholder = 'Enter your todo';
+			// }
+		}, 4000);
 		return () => clearInterval(placeholderInterval);
+		// typeWriter('Ex. Make vanilla pudding...');
 	});
 
 	const moveTodo = (todo, direction) => {
