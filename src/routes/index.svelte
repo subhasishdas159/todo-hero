@@ -203,7 +203,7 @@
 							</div>
 						</div>
 						<div
-							class={`badge ${
+							class={`badge border-error ${
 								todo.isUrgent ? 'badge-error' : 'badge-outline'
 							} cursor-pointer py-4 px-2`}
 							on:click={() => {
@@ -216,7 +216,7 @@
 							now!
 						</div>
 						<div
-							class={`badge ${
+							class={`badge border-warning ${
 								todo.isImportant ? 'badge-warning' : 'badge-outline'
 							} cursor-pointer py-4 px-2`}
 							on:click={() => {
@@ -229,7 +229,7 @@
 							imp
 						</div>
 						<div
-							class={`badge ${
+							class={`badge border-info ${
 								todo.isHard ? 'badge-info' : 'badge-outline'
 							} cursor-pointer py-4 px-2`}
 							on:click={() => {
