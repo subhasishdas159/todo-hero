@@ -3,9 +3,9 @@
 	import Nav from '@comp/Nav.svelte';
 	import { onMount } from 'svelte';
 
-	function typeWriter(txt, speed = 100) {
-		inputPlaceholder = ''
-		let timeout, i = 0;
+	function typeWriter(txt, speed = 50) {
+		inputPlaceholder = '';
+		let i = 0;
 
 		function typeText() {
 			if (i < txt.length) {
@@ -15,7 +15,20 @@
 			}
 		}
 
-		typeText()
+		typeText();
+	}
+	function reverseTypeWriter(speed = 50) {
+		let j = inputPlaceholder.length;
+
+		function reverseTypeText() {
+			if (j > 0) {
+				inputPlaceholder = inputPlaceholder.substring(0, inputPlaceholder.length - 1);
+				j--;
+				setTimeout(reverseTypeText, speed);
+			}
+		}
+
+		reverseTypeText();
 	}
 
 	let newTodo,
@@ -38,14 +51,10 @@
 
 	onMount(() => {
 		let placeholderInterval = setInterval(() => {
-			typeWriter(sampleTodos[Math.floor(Math.random() * sampleTodos.length)]);
-			// if (inputPlaceholder === 'Enter your todo') {
-			// } else {
-			// 	inputPlaceholder = 'Enter your todo';
-			// }
-		}, 4000);
+			const randomTodo = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
+			typeWriter(randomTodo);
+		}, 5000);
 		return () => clearInterval(placeholderInterval);
-		// typeWriter('Ex. Make vanilla pudding...');
 	});
 
 	const moveTodo = (todo, direction) => {
