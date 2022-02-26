@@ -3,7 +3,7 @@
 	import { goto } from '$app/navigation';
 	import { browser } from '$app/env';
 	import { todos } from '../stores';
-	import Modal from '@comp/Modal.svelte';
+	import Modal from '@ui/Modal.svelte';
 
 	let noIdGoBack = false,
 		wrongIdGoBack = false;

@@ -1,62 +1,8 @@
 <script>
 	import { todos } from '../stores';
 	import Nav from '@comp/Nav.svelte';
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
-
-	function typeWriter(txt, speed = 50) {
-		inputPlaceholder = '';
-		let i = 0;
-
-		function typeText() {
-			if (i < txt.length) {
-				inputPlaceholder += txt.charAt(i);
-				i++;
-				setTimeout(typeText, speed);
-			}
-		}
-
-		typeText();
-	}
-	function reverseTypeWriter(speed = 50) {
-		let j = inputPlaceholder.length;
-
-		function reverseTypeText() {
-			if (j > 0) {
-				inputPlaceholder = inputPlaceholder.substring(0, inputPlaceholder.length - 1);
-				j--;
-				setTimeout(reverseTypeText, speed);
-			}
-		}
-
-		reverseTypeText();
-	}
-
-	let newTodo,
-		inputPlaceholder = 'Enter your todo';
-
-	const sampleTodos = [
-		'Ex. Make vanilla pudding...',
-		'Ex. Buy a horse...',
-		'Ex. Invite someone at office...',
-		'Ex. Race with a turtle...',
-		'Ex. Forget to breathe...',
-		'Ex. Dance hip hop with music...',
-		'Ex. Wear a tie...',
-		'Ex. Go for a swim...',
-		'Ex. Code a website...',
-		'Ex. Imitate a parrot...',
-		'Ex. Say yes to a cat...',
-		"Ex. Snatch away a kid's toy..."
-	];
-
-	onMount(() => {
-		let placeholderInterval = setInterval(() => {
-			const randomTodo = sampleTodos[Math.floor(Math.random() * sampleTodos.length)];
-			typeWriter(randomTodo);
-		}, 5000);
-		return () => clearInterval(placeholderInterval);
-	});
+	import TodoInput from '@comp/TodoInput.svelte';
 
 	const moveTodo = (todo, direction) => {
 		console.log('direction', todo);
@@ -74,50 +20,7 @@
 </script>
 
 <div class="mt-6 px-6 mb-20">
-	<div class="form-control">
-		<form class="input-group w-full max-w-md mb-6 mx-auto">
-			<input
-				type="text"
-				placeholder={inputPlaceholder}
-				class="input input-bordered w-full focus:outline-none shadow focus:shadow-inner focus:ring-1"
-				bind:value={newTodo}
-			/>
-			<button
-				class="btn btn-square shadow btn-primary"
-				type="submit"
-				on:click|preventDefault={() => {
-					if (!newTodo) return;
-					$todos = [
-						{
-							id: Date.now(),
-							text: newTodo,
-							isUrgent: false,
-							isImportant: false,
-							isHard: false,
-							isDone: false
-						},
-						...$todos
-					];
-					newTodo = '';
-				}}
-			>
-				<svg
-					class="w-6 h-6"
-					fill="none"
-					stroke="currentColor"
-					viewBox="0 0 24 24"
-					xmlns="http://www.w3.org/2000/svg"
-					><path
-						stroke-linecap="round"
-						stroke-linejoin="round"
-						stroke-width="2"
-						d="M12 6v6m0 0v6m0-6h6m-6 0H6"
-					/></svg
-				>
-			</button>
-		</form>
-	</div>
-
+	<TodoInput />
 	<div class="max-w-md mx-auto -mt-2 mb-2">
 		{#if $todos.length}
 			<p class="text-center">

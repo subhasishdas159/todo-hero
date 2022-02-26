@@ -1,6 +1,6 @@
 <script>
 	import { todos } from '../stores';
-	import Modal from '@comp/Modal.svelte';
+	import Modal from '@ui/Modal.svelte';
 	let askToDelete = false;
 	let askToSort = false;
 
