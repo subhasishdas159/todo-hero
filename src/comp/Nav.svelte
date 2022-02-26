@@ -25,8 +25,23 @@
 </script>
 
 <ul
-	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-4 left-1/2 -translate-x-1/2 z-[99]"
+	class="menu glass menu-horizontal rounded-box shadow-lg border fixed bottom-4 left-1/2 -translate-x-1/2 z-[99]"
 >
+	<li on:click={() => console.log('hello')}>
+		<span
+			class="active:bg-info hover:bg-blue-100 text-info hover:text-info active:text-white mobileOnly:hover:bg-white mobileOnly text-info:hover:text-info mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
+		>
+			<svg
+				class="w-6 h-6"
+				fill="currentColor"
+				viewBox="0 0 20 20"
+				xmlns="http://www.w3.org/2000/svg"
+				><path
+					d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z"
+				/></svg
+			>
+		</span>
+	</li>
 	<li on:click={() => (askToSort = true)}>
 		<span
 			class="active:bg-info hover:bg-blue-100 text-info hover:text-info active:text-white mobileOnly:hover:bg-white mobileOnly text-info:hover:text-info mobileOnly:focus:bg-blue-300 mobileOnly:active:bg-info mobileOnly:active:text-white"
