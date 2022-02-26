@@ -2,6 +2,7 @@
 	import { todos } from '../stores';
 	import Nav from '@comp/Nav.svelte';
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	function typeWriter(txt, speed = 50) {
 		inputPlaceholder = '';
@@ -142,7 +143,7 @@
 						<div
 							class="absolute top-1 right-1 p-0 z-20 text-success"
 							on:click|stopPropagation={() => {
-								console.log('djfkgl');
+								goto(`/pomo?id=${todo.id}`);
 							}}
 						>
 							<svg
