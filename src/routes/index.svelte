@@ -5,6 +5,9 @@
 	import TodoInput from '@comp/TodoInput.svelte';
 	import TodoProgress from '@comp/TodoProgress.svelte';
 	import TodoItem from '@comp/TodoItem.svelte';
+	import Stat from '@comp/Stat.svelte';
+
+	export let activeScreen = '';
 
 	const moveTodo = (todo, direction) => {
 		console.log('direction', todo);
@@ -21,15 +24,19 @@
 	};
 </script>
 
-<div class="mt-6 px-6 mb-20">
-	<TodoInput />
-	<TodoProgress />
+{#if !activeScreen}
+	<div class="mt-6 px-6 mb-20">
+		<TodoInput />
+		<TodoProgress />
 
-	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
-		{#each $todos as todo (todo.id)}
-			<TodoItem {todo} {moveTodo} />
-		{/each}
+		<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
+			{#each $todos as todo (todo.id)}
+				<TodoItem {todo} {moveTodo} />
+			{/each}
+		</div>
 	</div>
-</div>
+{:else if activeScreen === 'stat'}
+	<Stat />
+{/if}
 
-<Nav />
+<Nav bind:activeScreen />
