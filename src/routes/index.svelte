@@ -1,13 +1,10 @@
 <script>
 	import { todos } from '../stores';
-	import Nav from '@comp/Nav.svelte';
 	import { goto } from '$app/navigation';
 	import TodoInput from '@comp/TodoInput.svelte';
 	import TodoProgress from '@comp/TodoProgress.svelte';
 	import TodoItem from '@comp/TodoItem.svelte';
-	import Stat from '@comp/Stat.svelte';
-
-	export let activeScreen = '';
+	// import Stat from '@comp/Stat.svelte';
 
 	const moveTodo = (todo, direction) => {
 		console.log('direction', todo);
@@ -24,19 +21,13 @@
 	};
 </script>
 
-{#if !activeScreen}
-	<div class="mt-6 px-6 mb-20">
-		<TodoInput />
-		<TodoProgress />
+<div class="mt-6 px-6 mb-20">
+	<TodoInput />
+	<TodoProgress />
 
-		<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
-			{#each $todos as todo (todo.id)}
-				<TodoItem {todo} {moveTodo} />
-			{/each}
-		</div>
+	<div class="flex flex-row flex-wrap justify-start max-w-5xl mx-auto">
+		{#each $todos as todo (todo.id)}
+			<TodoItem {todo} {moveTodo} />
+		{/each}
 	</div>
-{:else if activeScreen === 'stat'}
-	<Stat />
-{/if}
-
-<Nav bind:activeScreen />
+</div>
