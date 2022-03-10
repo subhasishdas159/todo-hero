@@ -4,6 +4,7 @@
 	import { browser } from '$app/env';
 	import { todos } from '../stores';
 	import Modal from '@ui/Modal.svelte';
+	import { onMount } from 'svelte';
 	import { prefetchRoutes } from '$app/navigation';
 
 	onMount(() => {
