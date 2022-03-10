@@ -11,7 +11,7 @@
 			<span for="my-modal" class="p-3" on:click={() => (show = false)}>Cancel</span>
 			<button
 				for="my-modal"
-				class={`btn ${error ? 'btn-error' : 'btn-primary'}`}
+				class={`btn ${error ? 'btn-error text-white' : 'btn-primary'}`}
 				on:click={onConfirm}>{btnLabel}</button
 			>
 		</div>

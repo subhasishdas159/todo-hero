@@ -1,10 +1,16 @@
 <script>
+	import { onMount } from 'svelte';
 	import { todos } from '../stores';
 	import { goto } from '$app/navigation';
 	import TodoInput from '@comp/TodoInput.svelte';
 	import TodoProgress from '@comp/TodoProgress.svelte';
 	import TodoItem from '@comp/TodoItem.svelte';
 	// import Stat from '@comp/Stat.svelte';
+	import { prefetchRoutes } from '$app/navigation';
+
+	onMount(() => {
+		prefetchRoutes();
+	});
 
 	const moveTodo = (todo, direction) => {
 		console.log('direction', todo);
