@@ -36,7 +36,10 @@
 					type="checkbox"
 					checked={todo.isDone}
 					class="checkbox checkbox-primary block w-6 h-6 flex-shrink-0"
-					on:change={() => (todo.isDone = !todo.isDone)}
+					on:change={() => {
+						const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
+						$todos[index].isDone = !todo.isDone;
+					}}
 				/>
 				<span class={`label-text ${todo.isDone && 'line-through'} mr-6`}>{todo.text}</span>
 			</label>
