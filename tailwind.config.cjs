@@ -6,8 +6,8 @@ module.exports = {
 				mobileOnly: { max: '639px' }
 			},
 			fontFamily: {
-        montserrat: ['montserrat']
-      },
+				montserrat: ['montserrat']
+			}
 		}
 	},
 	plugins: [require('daisyui')],
@@ -36,10 +36,10 @@ module.exports = {
 					'base-300': '#E5E9F0',
 					'base-content': '#2E3440',
 
-					info: '#1c92f2',
-					success: '#86AA68',
-					warning: '#E3B65B',
-					error: '#CB7E85',
+					info: '#B6DCFB',
+					success: '#B0C79C',
+					warning: '#EFD5A1',
+					error: '#E2B8BC',
 
 					'--rounded-box': '1rem',
 					'--rounded-btn': '0.5rem',
