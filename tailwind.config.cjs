@@ -36,10 +36,10 @@ module.exports = {
 					'base-300': '#E5E9F0',
 					'base-content': '#2E3440',
 
-					info: '#B6DCFB',
-					success: '#B0C79C',
-					warning: '#EFD5A1',
-					error: '#E2B8BC',
+					info: '#43A5F4',
+					success: '#86AA68',
+					warning: '#E3B65B',
+					error: '#D79BA1',
 
 					'--rounded-box': '1rem',
 					'--rounded-btn': '0.5rem',
