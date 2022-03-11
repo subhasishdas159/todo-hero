@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
 	import { sampleTodos } from '@config/sampleTodos';
 	import { todos } from '../stores';
 
@@ -70,7 +69,7 @@
 					stroke-width="2"
 					d="M12 6v6m0 0v6m0-6h6m-6 0H6"
 				/></svg
-			>
+			>&nbsp;
 		</button>
 	</form>
 </div>
