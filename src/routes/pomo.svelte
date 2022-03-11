@@ -12,6 +12,7 @@
 	});
 
 	let noIdGoBack = false,
+		urlIsOkay = false,
 		wrongIdGoBack = false;
 
 	$: console.log('$page.params.id', $page.url.searchParams.get('id'));
@@ -23,6 +24,8 @@
 			!$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id')).length
 		) {
 			wrongIdGoBack = true;
+		} else {
+			urlIsOkay = true;
 		}
 	}
 </script>
@@ -42,6 +45,12 @@
 		/></svg
 	>
 </div>
+
+{#if urlIsOkay}
+	{$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id'))[0]?.text}
+{:else}
+	Todo was selected incorrectly
+{/if}
 
 <Modal
 	bind:show={noIdGoBack}
