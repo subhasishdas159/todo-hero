@@ -7,8 +7,8 @@
 	import { onMount } from 'svelte';
 	import { prefetchRoutes } from '$app/navigation';
 
-	const WORK_TIME = 25 * 60;
-	const BREAK_TIME = 5 * 60;
+	const WORK_TIME = 25;
+	const BREAK_TIME = 5;
 
 	onMount(() => {
 		prefetchRoutes();
@@ -34,11 +34,11 @@
 		}
 	}
 
-	let pomoInterval;
+	let pomoInterval,
+		timer = 0;
 	function startTimer(duration) {
-		var timer = duration,
-			minutes,
-			seconds;
+		timer = duration;
+		let minutes, seconds;
 		pomoInterval = setInterval(function () {
 			minutes = parseInt(timer / 60, 10);
 			seconds = parseInt(timer % 60, 10);
@@ -56,20 +56,20 @@
 					timer = WORK_TIME;
 					currentTimer = WORK_TIME;
 				}
-				// clearInterval(pomoInterval);
 			}
 		}, 1000);
 	}
 
 	const stopTimer = () => {
 		timeRemaining = false;
+		timer = 0;
 		clearInterval(pomoInterval);
 	};
 
 	$: console.log('timeRemaining', timeRemaining);
 </script>
 
-<div class="mx-auto h-6 w-6 mt-8" on:click={() => goto('/')}>
+<div class="mx-auto h-6 w-6 mt-8 mb-6" on:click={() => goto('/')}>
 	<svg
 		class="w-full h-full"
 		fill="none"
@@ -92,18 +92,27 @@
 				{$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id'))[0]
 					?.text}
 			</h3>
-			<div class="mt-8">
-				{#if timeRemaining === null}
-					<p>Not started yet</p>
-				{:else if timeRemaining === false}
-					<p>Stopped</p>
-				{:else}
-					{timeRemaining}
-				{/if}
+			<div class="mt-12 mb-4">
+				<div
+					class="radial-progress text-primary"
+					style={`--value:${(timer / currentTimer) * 100}; --size:12rem; --thickness: ${
+						timer && '10px'
+					}`}
+				>
+					<div class="text-gray-700">
+						{#if timeRemaining === null}
+							<p>Not started yet</p>
+						{:else if timeRemaining === false}
+							<p>Stopped</p>
+						{:else}
+							{timeRemaining}
+						{/if}
+					</div>
+				</div>
 			</div>
 			<div class="flex justify-center">
 				<button
-					class="btn btn-primary mt-8 mobileOnly:hover:bg-primary"
+					class="btn btn-primary mt-8 mobileOnly:hover:bg-primary mobileOnly:hover:border-0"
 					on:click={() => {
 						if (timeRemaining !== null && timeRemaining !== false) {
 							stopTimer();
