@@ -69,7 +69,7 @@
 	$: console.log('timeRemaining', timeRemaining);
 </script>
 
-<div class="mx-auto h-6 w-6 mt-8 mb-6" on:click={() => goto('/')}>
+<div class="mx-auto h-6 w-6 mt-8 mb-6 text-gray-600" on:click={() => goto('/')}>
 	<svg
 		class="w-full h-full"
 		fill="none"
