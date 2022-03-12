@@ -1,14 +1,14 @@
 export const sampleTodos = [
-  'Ex. Make vanilla pudding...',
-  'Ex. Buy a horse...',
-  'Ex. Invite someone at office...',
-  'Ex. Race with a turtle...',
-  'Ex. Forget to breathe...',
-  'Ex. Dance hip hop with music...',
-  'Ex. Wear a tie...',
-  'Ex. Go for a swim...',
-  'Ex. Code a website...',
-  'Ex. Imitate a parrot...',
-  'Ex. Say yes to a cat...',
-  "Ex. Snatch away a kid's toy..."
+  'Make vanilla pudding...',
+  'Buy a horse...',
+  'Invite someone at office...',
+  'Race with a turtle...',
+  'Forget to breathe...',
+  'Dance hip hop with music...',
+  'Wear a tie...',
+  'Go for a swim...',
+  'Code a website...',
+  'Imitate a parrot...',
+  'Say yes to a cat...',
+  "Snatch away a kid's toy..."
 ];

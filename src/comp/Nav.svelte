@@ -30,7 +30,7 @@
 </script>
 
 <ul
-	class="menu bg-white menu-horizontal rounded-box shadow-lg border fixed bottom-4 left-1/2 -translate-x-1/2 z-[99]"
+	class="menu uiglass menu-horizontal rounded-box shadow-lg fixed bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-[99]"
 >
 	<li
 		on:click={() => {

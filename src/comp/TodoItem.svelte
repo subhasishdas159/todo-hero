@@ -47,7 +47,7 @@
 		<div class="justify-end card-actions mt-4">
 			<div class="btn-group mr-2">
 				<div
-					class="btn btn-sm btn-secondary bg-pink-300 px-1 mobileOnly:hover:bg-secondary mobileOnly:hover:border-secondary"
+					class="btn btn-sm btn-secondary bg-pink-300 px-1 mobileOnly:hover:bg-pink-300 mobileOnly:hover:border-secondary"
 					on:click={() => moveTodo(todo, 'up')}
 				>
 					<svg
@@ -63,7 +63,7 @@
 					>
 				</div>
 				<div
-					class="btn btn-sm btn-secondary bg-pink-300 px-1 mobileOnly:hover:bg-secondary mobileOnly:hover:border-secondary"
+					class="btn btn-sm btn-secondary bg-pink-300 px-1 mobileOnly:hover:bg-pink-300 mobileOnly:hover:border-secondary"
 					on:click={() => moveTodo(todo, 'down')}
 				>
 					<svg
@@ -81,7 +81,7 @@
 			</div>
 			<div
 				class={`badge border-error ${
-					todo.isUrgent ? 'badge-error shadow-inner text-white' : 'badge-outline text-gray-500'
+					todo.isUrgent ? 'badge-error shadow-inner text-white' : 'badge-outline text-gray-400'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
@@ -102,7 +102,7 @@
 			</div>
 			<div
 				class={`badge border-warning ${
-					todo.isImportant ? 'badge-warning shadow-inner text-white' : 'badge-outline text-gray-500'
+					todo.isImportant ? 'badge-warning shadow-inner text-white' : 'badge-outline text-gray-400'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
@@ -121,7 +121,7 @@
 			</div>
 			<div
 				class={`badge border-info ${
-					todo.isHard ? 'badge-info shadow-inner text-white' : 'badge-outline text-gray-500'
+					todo.isHard ? 'badge-info shadow-inner text-white' : 'badge-outline text-gray-400'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);

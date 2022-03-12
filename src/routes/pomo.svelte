@@ -7,12 +7,17 @@
 	import { onMount } from 'svelte';
 	import { prefetchRoutes } from '$app/navigation';
 
+	const WORK_TIME = 25 * 60;
+	const BREAK_TIME = 5 * 60;
+
 	onMount(() => {
 		prefetchRoutes();
 	});
 
 	let noIdGoBack = false,
 		urlIsOkay = false,
+		timeRemaining = null,
+		currentTimer = WORK_TIME,
 		wrongIdGoBack = false;
 
 	$: console.log('$page.params.id', $page.url.searchParams.get('id'));
@@ -28,6 +33,40 @@
 			urlIsOkay = true;
 		}
 	}
+
+	let pomoInterval;
+	function startTimer(duration) {
+		var timer = duration,
+			minutes,
+			seconds;
+		pomoInterval = setInterval(function () {
+			minutes = parseInt(timer / 60, 10);
+			seconds = parseInt(timer % 60, 10);
+
+			minutes = minutes < 10 ? '0' + minutes : minutes;
+			seconds = seconds < 10 ? '0' + seconds : seconds;
+
+			timeRemaining = minutes + ':' + seconds;
+
+			if (--timer < 0) {
+				if (currentTimer === WORK_TIME) {
+					timer = BREAK_TIME;
+					currentTimer = BREAK_TIME;
+				} else {
+					timer = WORK_TIME;
+					currentTimer = WORK_TIME;
+				}
+				// clearInterval(pomoInterval);
+			}
+		}, 1000);
+	}
+
+	const stopTimer = () => {
+		timeRemaining = false;
+		clearInterval(pomoInterval);
+	};
+
+	$: console.log('timeRemaining', timeRemaining);
 </script>
 
 <div class="mx-auto h-6 w-6 mt-8" on:click={() => goto('/')}>
@@ -47,7 +86,35 @@
 </div>
 
 {#if urlIsOkay}
-	{$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id'))[0]?.text}
+	<div class="mx-6">
+		<div class="bg-white max-w-xl mx-auto container rounded-box shadow-md px-4 py-6 text-center">
+			<h3 class="text-3xl text-blue-700">
+				{$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id'))[0]
+					?.text}
+			</h3>
+			<div class="mt-8">
+				{#if timeRemaining === null}
+					<p>Not started yet</p>
+				{:else if timeRemaining === false}
+					<p>Stopped</p>
+				{:else}
+					{timeRemaining}
+				{/if}
+			</div>
+			<div class="flex justify-center">
+				<button
+					class="btn btn-primary mt-8 mobileOnly:hover:bg-primary"
+					on:click={() => {
+						if (timeRemaining !== null && timeRemaining !== false) {
+							stopTimer();
+						} else {
+							startTimer(WORK_TIME);
+						}
+					}}>{timeRemaining !== null && timeRemaining !== false ? 'Stop' : 'Start'}</button
+				>
+			</div>
+		</div>
+	</div>
 {:else}
 	Todo was selected incorrectly
 {/if}

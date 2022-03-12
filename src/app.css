@@ -1,11 +1,11 @@
 @tailwind base;
 @tailwind components;
 @font-face {
-  font-family: montserrat;
-  src: url(/static/fonts/Montserrat-Medium.ttf);
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
+	font-family: montserrat;
+	src: url(/static/fonts/Montserrat-Medium.ttf);
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
 }
 /* @font-face {
   font-family: sharp;
@@ -35,16 +35,22 @@ body {
 }
 
 @supports (backdrop-filter: blur(16px)) {
-  .glass {
-    /* background-color: rgba(255, 255, 255, 0.7); */
-    backdrop-filter: blur(16px);
-    /* border: 1px solid rgba(229, 231, 235, 1); */
-  }
+	.uiglass {
+		/* From https://css.glass */
+		background: rgba(255, 255, 255, 0.45);
+		border-radius: 16px;
+		backdrop-filter: blur(10px);
+		-webkit-backdrop-filter: blur(10px);
+		border: 1px solid rgba(229, 231, 235, 1)
+	}
 }
 
 @supports not (backdrop-filter: blur(16px)) {
-  .glass {
-    /* background-color: rgba(255, 255, 255); */
-    /* border: 1px solid rgba(229, 231, 235, 1); */
-  }
+	.uiglass {
+		background: rgba(255, 255, 255);
+		border-radius: 16px;
+		/* backdrop-filter: blur(5px);
+		-webkit-backdrop-filter: blur(5px); */
+		border: 1px solid rgba(229, 231, 235, 1)
+	}
 }
