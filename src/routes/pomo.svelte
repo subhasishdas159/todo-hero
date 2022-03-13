@@ -96,10 +96,13 @@
 			<div class="my-4">
 				<div
 					class="radial-progress text-primary"
-					style={`--value:${(timer / currentTimer) * 100}; --size:11rem; --thickness: ${
+					style={`--value:${(timer / currentTimer) * 100}; --size:12rem; --thickness: ${
 						timer && '10px'
 					}`}
 				>
+					{#if currentTimer === BREAK_TIME}
+						<img class="w-12 h-12 mx-auto" src="/static/img/pomo/break.svg" alt="" />
+					{/if}
 					<div class="text-gray-700">
 						{#if timeRemaining === null}
 							<p>Not started</p>
