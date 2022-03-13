@@ -37,6 +37,7 @@
 	let pomoInterval,
 		timer = 0;
 	function startTimer(duration) {
+		clearInterval(pomoInterval);
 		timer = duration;
 		let minutes, seconds;
 		pomoInterval = setInterval(function () {
@@ -86,22 +87,22 @@
 </div>
 
 {#if urlIsOkay}
-	<div class="mx-6">
+	<div class="mx-6 mb-20">
 		<div class="bg-white max-w-xl mx-auto container rounded-box shadow-md px-4 py-6 text-center">
-			<h3 class="text-3xl text-blue-700">
+			<h3 class="text-xl text-blue-700">
 				{$todos.filter((todoItem) => String(todoItem.id) === $page.url.searchParams.get('id'))[0]
 					?.text}
 			</h3>
-			<div class="mt-12 mb-4">
+			<div class="my-4">
 				<div
 					class="radial-progress text-primary"
-					style={`--value:${(timer / currentTimer) * 100}; --size:12rem; --thickness: ${
+					style={`--value:${(timer / currentTimer) * 100}; --size:11rem; --thickness: ${
 						timer && '10px'
 					}`}
 				>
 					<div class="text-gray-700">
 						{#if timeRemaining === null}
-							<p>Not started yet</p>
+							<p>Not started</p>
 						{:else if timeRemaining === false}
 							<p>Stopped</p>
 						{:else}
