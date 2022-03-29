@@ -81,7 +81,7 @@
 			</div>
 			<div
 				class={`badge border-error ${
-					todo.isUrgent ? 'badge-error shadow-inner text-white' : 'badge-outline text-gray-400'
+					todo.isUrgent ? 'badge-error shadow-inner text-white' : 'badge-outline text-gray-300'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
@@ -102,7 +102,7 @@
 			</div>
 			<div
 				class={`badge border-warning ${
-					todo.isImportant ? 'badge-warning shadow-inner text-white' : 'badge-outline text-gray-400'
+					todo.isImportant ? 'badge-warning shadow-inner text-white' : 'badge-outline text-gray-300'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
@@ -121,7 +121,7 @@
 			</div>
 			<div
 				class={`badge border-info ${
-					todo.isHard ? 'badge-info shadow-inner text-white' : 'badge-outline text-gray-400'
+					todo.isHard ? 'badge-info shadow-inner text-white' : 'badge-outline text-gray-300'
 				} cursor-pointer py-4 px-2`}
 				on:click={() => {
 					const index = $todos.indexOf($todos.filter((todoItem) => todoItem.id === todo.id)[0]);
